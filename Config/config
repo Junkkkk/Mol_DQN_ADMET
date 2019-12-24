@@ -1,0 +1,49 @@
+{
+    "train_param": {
+        "num_episodes": 40000,
+        "max_steps_per_episode": 20,
+        "learning_rate": 0.0001,
+        "learning_rate_decay_steps": 10000,
+        "learning_rate_decay_rate": 0.9,
+        "comment_learning_frequency": "freq of updating q*",
+        "learning_frequency": 4,
+        "comment_update_frequency": "freq of updating target q to q*",
+        "update_frequency": 20,
+        "batch_norm": true,
+        "batch_size": 128,
+        "grad_clipping": 0,
+        "activation": "relu",
+        "optimizer": "Adam"
+    },
+    "model_param": {
+        "comment_bootstrap_head": "# of bootstrapped q fn / 0 : no bootstrap",
+        "num_bootstrap_heads": 32,
+        "comment_dense_layer": "must be equal # of bootstrap head if not 0",
+        "dense_layers": [1024,512,128,32],
+        "epsilon": 0.01,
+        "gamma": 1.0,
+        "discount_factor": 0.9,
+        "double_q": true,
+        "replay_buffer_size": 5000,
+        "prioritized": false,
+        "prioritized_alpha": 0.6,
+        "prioritized_beta": 0.4,
+        "prioritized_epsilon": 0.000001
+    },
+    "ingredient_param": {
+        "fingerprint_length": 2048,
+        "fingerprint_radius": 3
+    },
+    "action_param": {
+        "atom_types": ["C","O","N"],
+        "allow_removal": true,
+        "allow_no_modification": true,
+        "allow_bonds_between_rings": true,
+        "allowed_ring_sizes": [5,6]
+    },
+    "save_param": {
+        "save_frequency": 200,
+        "max_num_checkpoints": 10,
+        "model_dir": "/home/junyoung/workspace/Mol-DQN/result/"
+    }
+}

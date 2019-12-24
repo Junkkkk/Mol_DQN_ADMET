@@ -1,0 +1,54 @@
+{
+    "model_name": "multi_logp_qed_model",
+    "model": "dqn",
+    "train_param": {
+        "comment_sim_weight" : "proportion of similiarity in reward [0,1]",
+        "similarity_weight" : 0.4,
+        "num_episodes": 2500,
+        "max_steps_per_episode": 20,
+        "learning_rate": 0.0001,
+        "learning_rate_decay_steps": 1000,
+        "learning_rate_decay_rate": 0.9,
+        "comment_learning_frequency": "freq of updating q*",
+        "learning_frequency": 4,
+        "comment_update_frequency": "freq of updating target q to q*",
+        "update_frequency": 20,
+        "batch_norm": false,
+        "batch_size": 128,
+        "grad_clipping": 10.0,
+        "activation": "relu",
+        "optimizer": "Adam"
+    },
+    "model_param": {
+        "comment_bootstrap_head": "# of bootstrapped q fn / 0 : no bootstrap",
+        "num_bootstrap_heads": 12,
+        "comment_dense_layer": "must be equal # of bootstrap head if not 0",
+        "dense_layers": [1024,512,128,32],
+        "epsilon": 1,
+        "gamma": 1.0,
+        "discount_factor": 0.9,
+        "double_q": true,
+        "replay_buffer_size": 5000,
+        "prioritized": true,
+        "prioritized_alpha": 0.6,
+        "prioritized_beta": 0.4,
+        "prioritized_epsilon": 0.000001
+    },
+    "ingredient_param": {
+        "fingerprint_length": 2048,
+        "fingerprint_radius": 3
+    },
+    "action_param": {
+        "atom_types": ["C","O","N"],
+        "allow_removal": false,
+        "allow_no_modification": false,
+        "allow_bonds_between_rings": false,
+        "allowed_ring_sizes": [5,6]
+    },
+    "save_param": {
+        "save_frequency": 200,
+        "max_num_checkpoints": 1,
+        "model_path": "/home/junyoung/workspace/Mol_DQN_ADMET_v2/result/all_m1",
+        "log_path": "/home/junyoung/workspace/Mol_DQN_ADMET_v2/result/all_m1/log.log"
+    }
+}
